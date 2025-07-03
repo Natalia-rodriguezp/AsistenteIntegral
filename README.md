@@ -62,7 +62,6 @@ python main.py
 
 ### main.py
 - **Función**: Coordinador principal del sistema
-- **Responsabilidades**:
   - Carga de documentos
   - Construcción de base de datos vectorial
   - Interfaz de usuario interactiva
@@ -70,7 +69,6 @@ python main.py
 
 ### resume_processor.py
 - **Función**: Procesamiento de documentos
-- **Responsabilidades**:
   - Extracción de texto de PDFs
   - Extracción de texto de archivos DOCX
   - Validación de archivos y manejo de errores
@@ -78,7 +76,6 @@ python main.py
 
 ### qa_engine.py
 - **Función**: Motor de preguntas y respuestas
-- **Responsabilidades**:
   - Conversión de texto a embeddings vectoriales
   - Búsqueda semántica por similitud coseno
   - Generación de respuestas con GPT-4o
