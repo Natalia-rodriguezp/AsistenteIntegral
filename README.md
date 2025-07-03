@@ -40,9 +40,9 @@ set OPENAI_API_KEY=tu_api_key_aqui
 ### 6. Agregar currículos
 Coloca tus archivos PDF y DOCX en la carpeta `data/`
 
-##  Uso del Sistema
+## 7. Uso del Sistema
 
-### Ejecutar el asistente
+### 8. Ejecutar el asistente
 ```bash
 python main.py
 ```
@@ -108,7 +108,7 @@ TOP_K = 5          # Número de fragmentos más relevantes a usar
 4. **Contexto**: Se seleccionan los 5 fragmentos más relevantes
 5. **Generación**: GPT-4o genera una respuesta basada en el contexto
 
-## Limitaciones y Consideraciones
+## Limitaciones
 
 - **API Key**: Requiere una clave válida de OpenAI
 - **Costo**: Cada consulta genera costos en la API de OpenAI
