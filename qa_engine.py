@@ -41,16 +41,19 @@ def _embed(texts): #Convierte textos en embeddings vectoriales usando OpenAI.
     
     while True: #Bucle infinito hasta que se haga un return
         try:
+
             # Crear embeddings usando el modelo de OpenAI
             resp = client.embeddings.create( 
                 model="text-embedding-3-small",  # Llama a la API de OpenAI para obtener embeddings
                 input=texts,
+                timeout=60  # Espera máxima de 60 segundos para recibir la respuesta
             )
-            
+
             # Convertir a arrays numpy y normalizar
             vecs = [np.array(d.embedding, dtype=np.float32) for d in resp.data] #Convierte cada embedding en una lista np.array
+
             normalized_vecs = [v / np.linalg.norm(v) for v in vecs] #Normaliza cada vector
-            
+            return normalized_vecs
         except RateLimitError:
             # Si se excede el límite de velocidad, esperar y reintentar
             print(" Rate limit alcanzado - pausando 20 segundos...")
@@ -71,7 +74,7 @@ def build_db(documents): #Construye una base de datos vectorial a partir de docu
         
         # Convertir fragmentos a embeddings
         vecs = _embed(parts) #Obtiene un vector por fragmento
-        
+        # vecs = [] ;
         # Almacenar cada fragmento con su vector
         for part_id, (snippet, vec) in enumerate(zip(parts, vecs)):
             db.append({
@@ -90,7 +93,7 @@ def ask_question(db, question, k=TOP_K, lang="es"): #Responde una pregunta usand
     
     # Convertir pregunta a embedding
     q_vec = _embed([question])[0]
-    
+    # q_vec = []
     # Calcular similitud con todos los fragmentos
     # Usamos producto punto entre vectores normalizados
     scores = [float(np.dot(item["vec"], q_vec)) for item in db]
@@ -135,14 +138,14 @@ def ask_question(db, question, k=TOP_K, lang="es"): #Responde una pregunta usand
     except Exception as e:
         # Manejar otros errores inesperados
         answer = f" Error inesperado: {str(e)}"
-    """
+
     # Mostrar información de fragmentos que se usaron y la puntuación de cada uno
     print("\n Fragmentos utilizados:")
     for r, idx in enumerate(top_idx, 1):
         item = db[idx]
         score = scores[idx]
         print(f" [{r}] {item['file']} (parte {item['part']}) - Score: {score:.3f}")
-    """ 
+
     #Mostrar respuesta final
     print("\n Respuesta:")
     print(answer)
