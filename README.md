@@ -34,6 +34,7 @@ pip install -r requirements.txt
 ```
 
 ### 5. Configurar API Key de OpenAI
+Poner variable de entorno
 ```bash
 set OPENAI_API_KEY=tu_api_key_aqui
 
