@@ -37,13 +37,11 @@ pip install -r requirements.txt
 Poner variable de entorno
 ```bash
 set OPENAI_API_KEY=tu_api_key_aqui
-
+```
 ### 6. Agregar currículos
 Coloca tus archivos PDF y DOCX en la carpeta `data/`
 
-## 7. Uso del Sistema
-
-### 8. Ejecutar el asistente
+### 7. Ejecutar el asistente
 ```bash
 python main.py
 ```
