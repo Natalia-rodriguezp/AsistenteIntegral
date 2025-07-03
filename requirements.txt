@@ -1,0 +1,4 @@
+python-docx        # Librería para leer y procesar documentos Word (.docx)
+PyPDF2             # Librería para extraer texto y manipular archivos PDF
+openai             # Para acceder a la API de OpenAI (embeddings y GPT)
+numpy              # Operaciones matemáticas y manejo de vectores
